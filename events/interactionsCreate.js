@@ -21,7 +21,6 @@ module.exports = {
 
 		const now = Date.now();
 		const timestamps = cooldowns.get(command.data.name);
-		console.log(command);
 		const defaultCooldownDuration = 3;
 		const cooldownAmount = (command.cooldown ?? defaultCooldownDuration) * 1000;
 
