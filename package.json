@@ -1,0 +1,19 @@
+{
+  "name": "10s-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot to keep track of attendance in 10s",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "main": "index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "author": "Spencer Rafada",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0"
+  }
+}
