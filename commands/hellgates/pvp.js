@@ -15,6 +15,7 @@ module.exports = {
 
 		if (existingUser) {
 			existingUser.count += 1;
+			existingUser.date = new Date();
 			try {
 				await existingUser.save();
 				console.log(`[SUCCESS] Updated user: ${existingUser.username}`);
@@ -37,6 +38,6 @@ module.exports = {
 			}
 		}
 
-		await interaction.reply(`${user.username} ay nag PvP ngayon!`);
+		await interaction.reply(`<@${user.userId}> ay nag PvP ngayon!`);
 	},
 };
