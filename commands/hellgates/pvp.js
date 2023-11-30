@@ -10,8 +10,15 @@ module.exports = {
 	async execute(interaction) {
 		const user = interaction.options.getUser('user');
 		// console.log(user);
+		let existingUser;
 
-		const existingUser = await pvpSchema.findOne({ userId: user.id });
+		try {
+			existingUser = await pvpSchema.findOne({ userId: user.id });
+		}
+		catch (err) {
+			console.error(`[ERROR] Failed to find user: ${err}`);
+			await interaction.reply('Something went wrong! Try again later.');
+		}
 
 		if (existingUser) {
 			existingUser.count += 1;
