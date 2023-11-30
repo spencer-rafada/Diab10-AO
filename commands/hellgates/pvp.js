@@ -11,11 +11,13 @@ module.exports = {
 		const user = interaction.options.getUser('user');
 		// console.log(user);
 
-		const existingUser = await pvpSchema.findOne({ username: user.username, userId: user.id });
+		const existingUser = await pvpSchema.findOne({ userId: user.id });
 
 		if (existingUser) {
 			existingUser.count += 1;
 			existingUser.date = new Date();
+			existingUser.username = user.username;
+
 			try {
 				await existingUser.save();
 				console.log(`[SUCCESS] Updated user: ${existingUser.username}`);
@@ -40,6 +42,6 @@ module.exports = {
 			}
 		}
 
-		await interaction.reply(`<@${user.userId}> ay nag PvP ngayon!`);
+		await interaction.reply(`${user} ay nag PvP ngayon!`);
 	},
 };

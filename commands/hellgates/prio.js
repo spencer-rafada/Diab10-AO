@@ -17,6 +17,7 @@ module.exports = {
 		catch (err) {
 			console.error(`[ERROR] ${err}`);
 			await interaction.reply('Something went wrong! Try again later.');
+			return;
 		}
 
 		const pvePlayersFiltered = pvePlayers.filter((pvePlayer) => {
@@ -25,6 +26,20 @@ module.exports = {
 			});
 		});
 
-		// TODO: Show component
+		// Prepare the reply message
+		let replyMessage = '## Mga Players Kahapon\n';
+		replyMessage += '### PvP Players Kahapon:\n';
+		pvpPlayers.forEach((player) => {
+			replyMessage += `:thumbsup: ${player.username}\n`;
+		});
+
+		replyMessage += '\n';
+
+		replyMessage += '### PvE lang kahapon:\n';
+		pvePlayersFiltered.forEach((player) => {
+			replyMessage += `:hand_with_index_finger_and_thumb_crossed_tone5: ${player.username}\n`;
+		});
+
+		await interaction.reply(replyMessage);
 	},
 };
