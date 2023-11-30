@@ -22,6 +22,7 @@ module.exports = {
 			}
 			catch (err) {
 				console.error(`[ERROR] Failed to update user: ${err}`);
+				await interaction.reply('Something went wrong! Try again later.');
 			}
 		}
 		else {
@@ -35,6 +36,7 @@ module.exports = {
 			}
 			catch (err) {
 				console.error(`[ERROR] Failed to save user: ${err}`);
+				await interaction.reply('Something went wrong! Try again later.');
 			}
 		}
 

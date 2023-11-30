@@ -16,6 +16,7 @@ module.exports = {
 		}
 		catch (err) {
 			console.error(`[ERROR] ${err}`);
+			await interaction.reply('Something went wrong! Try again later.');
 		}
 
 		const pvePlayersFiltered = pvePlayers.filter((pvePlayer) => {
