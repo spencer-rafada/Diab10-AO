@@ -10,12 +10,13 @@ module.exports = {
 			option.setName('user').setDescription('Paldo').setRequired(true)),
 	async execute(interaction) {
 		const user = interaction.options.getUser('user');
+		const serverId = interaction.guild.id;
 		let pveInfo;
 		let pvpInfo;
 
 		try {
-			pvpInfo = await pvpSchema.findOne({ userId: user.id });
-			pveInfo = await pveSchema.findOne({ userId: user.id });
+			pvpInfo = await pvpSchema.findOne({ guildId: serverId, userId: user.id });
+			pveInfo = await pveSchema.findOne({ guildId: serverId, userId: user.id });
 		}
 		catch (err) {
 			console.error(`[ERROR] Failed to find user: ${err}`);
