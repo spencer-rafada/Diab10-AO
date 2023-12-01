@@ -9,11 +9,12 @@ module.exports = {
 			option.setName('user').setDescription('Sino ang nag PvP?').setRequired(true)),
 	async execute(interaction) {
 		const user = interaction.options.getUser('user');
+		const serverId = interaction.guild.id;
 		// console.log(user);
 		let existingUser;
 
 		try {
-			existingUser = await pvpSchema.findOne({ userId: user.id });
+			existingUser = await pvpSchema.findOne({ guildId: serverId, userId: user.id });
 		}
 		catch (err) {
 			console.error(`[ERROR] Failed to find user: ${err}`);
@@ -40,6 +41,7 @@ module.exports = {
 					username: user.username,
 					userId: user.id,
 					count: 1,
+					guildId: serverId,
 				}).save();
 				console.log(`[SUCCESS] Saved user: ${user.username}`);
 			}

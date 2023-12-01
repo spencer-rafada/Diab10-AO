@@ -5,6 +5,7 @@ const pveSchema = new mongoose.Schema({
 	userId: { type: String, required: true },
 	count: { type: Number, default: 0 },
 	date: { type: Date, default: Date.now },
+	guildId: { type: String, required: true },
 });
 
 module.exports = mongoose.model('pve', pveSchema, 'pve');
